@@ -160,6 +160,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="string_handlers.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +172,22 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Game.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Random.h">
       <SubType>
       </SubType>
     </ClInclude>

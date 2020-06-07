@@ -18,6 +18,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #include <string>
 #include <vector>
+#include <ostream>
+#include "Inventory.h"
+#include "Item.h"
+
 
 class Room
 {
@@ -25,6 +29,7 @@ protected:
     std::string _name;
     std::string _description;
     std::vector<Room*> _exits;
+    Inventory _inventory;
 
 public:
     Room(std::string name, std::string description) : _name(name), _description(description) {}
@@ -56,6 +61,35 @@ public:
     std::string getName() { return _name; }
     std::string getDescription() { return _description; }
 
+    void AddItem(Item* item)
+    {
+        _inventory.Add(item);
+    }
+
+    void RemoveItem(std::string name)
+    {
+        _inventory.Remove(name);
+    }
+
+
+    friend std::ostream& operator<<(std::ostream& os, const Room& room)
+    {
+        os << "Room" << std::endl;
+        os << "---------------------------------------" << std::endl;
+        os << "Name      : " << room._name << std::endl;
+        os << "Desription: " << room._name << std::endl;
+        os << "---------------------------------------" << std::endl;
+        os << "Exits" << std::endl;
+
+        for (auto exit : room._exits)
+        {
+            os << "\t" << exit->getName() << std::endl;
+        }
+
+        os << room._inventory;
+        return os;
+
+    }
 };
 
 
