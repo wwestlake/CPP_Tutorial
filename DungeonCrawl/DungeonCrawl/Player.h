@@ -23,6 +23,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "Random.h"
 #include "Item.h"
 #include "Inventory.h"
+#include "Money.h"
 
 class Player
 {
@@ -40,6 +41,8 @@ protected:
     int _damageTaken = 0;
 
     Inventory _inventory;
+    Purse _purse;
+
 
 public:
     Player(std::string name) : _name(name)
@@ -54,6 +57,7 @@ public:
     friend std::ostream& operator << (std::ostream& os, const Player& player)
     {
         os << "Player: " << player._name << std::endl;
+        os << player._purse;
         os << "------------------------------------" << std::endl;
         os << "Strength: " << player._strength << std::endl;
         os << "Health  : " << player._health << std::endl;
@@ -83,6 +87,18 @@ public:
     {
         _inventory.Remove(name);
     }
+
+    void AddMoney(Coinage coin, int number)
+    {
+        _purse.Add(coin, number);
+    }
+
+    void RemoveMoney(Coinage coin, int number)
+    {
+        _purse.Remove(coin, number);
+    }
+
+
 
 };
 
