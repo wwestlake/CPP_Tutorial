@@ -9,6 +9,7 @@
 #include "Random.h"
 #include "Player.h"
 #include "Room.h"
+#include "Money.h"
 
 int main()
 {
@@ -21,25 +22,33 @@ int main()
     //
     //game.GameLoop();
 
-    Player me("Bill");
+    //Player me("Bill");
+    //
+    //me.AddMoney(Coinage::COPPER, 1543);
+    //
+    //me.AddItem(new Item("Ball", "Red Ball", 12));
+    //me.AddItem(new Item("Cube", "Blue Cube", 14));
+    //me.AddItem(new Item("Cone", "Green Cone", 16));
+    //
+    //std::cout << me;
+    //
+    //me.RemoveItem("Ball");
+    //me.RemoveItem("Cone");
+    //std::cout << me;
+    //
+    //Room room("SPecial","A Room");
+    //room.AddRoom(new Room("Someplace", "Another room"));
+    //room.AddItem(new Item("Ball", "Red Ball", 12));
+    //room.AddItem(new Item("Cube", "Blue Cube", 14));
+    //room.AddItem(new Item("Cone", "Green Cone", 16));
+    
 
-    me.AddItem(new Item("Ball", "Red Ball", 12));
-    me.AddItem(new Item("Cube", "Blue Cube", 14));
-    me.AddItem(new Item("Cone", "Green Cone", 16));
+    //std::cout << room;
 
-    std::cout << me;
+    RandomCoins rcoins;
+    Coins c = rcoins.GetRandomCoins(100, 1500);
+    std::cout << c;
 
-    me.RemoveItem("Ball");
-    me.RemoveItem("Cone");
-    std::cout << me;
-
-    Room room("SPecial","A Room");
-    room.AddRoom(new Room("Someplace", "Another room"));
-    room.AddItem(new Item("Ball", "Red Ball", 12));
-    room.AddItem(new Item("Cube", "Blue Cube", 14));
-    room.AddItem(new Item("Cone", "Green Cone", 16));
-
-    std::cout << room;
 
 
 }
