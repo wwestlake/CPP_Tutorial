@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{09F19E0A-BBF6-4AC5-A672-FB165F5BAB11}</ProjectGuid>
+    <ProjectGuid>{F695C991-6948-4E10-9FA9-AB3103FD913B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>DungeonCrawl</RootNamespace>
+    <RootNamespace>ArraysAndLinkedLists</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,71 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DungeonCrawl.cpp" />
-    <ClCompile Include="DungeonCrawlGame.cpp">
+    <ClCompile Include="ArraysAndLinkedLists.cpp" />
+    <ClCompile Include="LinkedList.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="string_handlers.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Command.h">
+    <ClInclude Include="LinkedList.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="DungeonCrawlGame.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="GoCommand.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Inventory.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Money.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="QuitCommand.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Random.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Room.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="SHowCommand.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="string_handlers.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

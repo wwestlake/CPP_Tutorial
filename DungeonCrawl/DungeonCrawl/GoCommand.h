@@ -1,5 +1,5 @@
-#ifndef __Game_H
-#define __Game_H
+#ifndef __GoCommand_H
+#define __GoCommand_H
 
 /*
 Copyright 2020 William W. Westlake
@@ -16,51 +16,48 @@ portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-
-// X 1. Display a description of the game initialy when the game starts
-// 2. Startup a loop
-// X 3. Display a prompt for this game (supplied by the user of this class)
-// 4. Read some user input
-// 5. Pass that user input to a function specific to the game and get a result
-// 6. Print the result
-// 7. Go back to 3
-
-#include <iostream>
 #include <string>
+#include "Command.h"
 
-/**
-    Base class for games using text input and output with REPL
-*/
 
-class Game
+class GoCommand : public Command
 {
-private:
-protected:
-    std::string _name;
-    std::string _description;
-    std::string _prompt;
-    bool _running = true;
 
 public:
-    Game(std::string name, std::string description, std::string prompt);
 
-    void GameLoop();
-
-    void PrintBanner();
-    void PrintPrompt();
-    std::string ReadInput();
-
-    virtual void EvalCommand(std::string command) = 0;
-
-    virtual void PrintResult() = 0;
-
-    void GameOver()
+    virtual bool Execute(DungeonCrawlGame & game, Player & player, std::vector<std::string> params)
     {
-        _running = false;
+        std::string roomName = params[0];
+
+        Room* room = game.find(roomName);
+        if (room != nullptr)
+        {
+            player.setRoom(room);
+            return true;
+        }
+        _error.append("Unknow room: ");
+        _error.append(roomName);
+        return false;
+    }
+
+    virtual void error(std::ostream& os)
+    {
+        os << _error << std::endl;
+    }
+
+    static Command * parse(DungeonCrawlGame & game, Player & player, std::string command, std::vector<std::string> params)
+    {
+        Command* cmd = nullptr;
+        std::string cmdstr;
+        if (command == "go")
+        {
+            cmd = new GoCommand();
+        }
+        return cmd;
     }
 
 
 };
 
 
-#endif //Game_H
+#endif //GoCommand_H

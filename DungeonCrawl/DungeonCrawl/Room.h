@@ -77,7 +77,7 @@ public:
         os << "Room" << std::endl;
         os << "---------------------------------------" << std::endl;
         os << "Name      : " << room._name << std::endl;
-        os << "Desription: " << room._name << std::endl;
+        os << "Desription: " << room._description << std::endl;
         os << "---------------------------------------" << std::endl;
         os << "Exits" << std::endl;
 

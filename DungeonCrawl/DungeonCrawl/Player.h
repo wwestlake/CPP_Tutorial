@@ -24,6 +24,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "Item.h"
 #include "Inventory.h"
 #include "Money.h"
+#include "Room.h"
 
 class Player
 {
@@ -43,9 +44,10 @@ protected:
     Inventory _inventory;
     Purse _purse;
 
+    Room* _currentRoom;
 
 public:
-    Player(std::string name) : _name(name)
+    Player(std::string name) : _name(name), _currentRoom(nullptr)
     {
         _strength = _rand.Dice6(3);
         _health = _rand.Dice6(3);
@@ -54,9 +56,16 @@ public:
         _hitPoints = _rand.Dice6(3) + (_health / 3);
     }
 
+    void printRoom(std::ostream& os) const
+    {
+        os << *_currentRoom << std::endl;
+    }
+
+
     friend std::ostream& operator << (std::ostream& os, const Player& player)
     {
         os << "Player: " << player._name << std::endl;
+        player.printRoom(os);
         os << player._purse;
         os << "------------------------------------" << std::endl;
         os << "Strength: " << player._strength << std::endl;
@@ -65,6 +74,12 @@ public:
         os << "------------------------------------" << std::endl;
         os << player._inventory;
         return os;
+    }
+
+
+    void setRoom(Room* room)
+    {
+        _currentRoom = room;
     }
 
     bool isAlive() { return _alive; }
