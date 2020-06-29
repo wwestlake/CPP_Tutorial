@@ -19,6 +19,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <vector>
 #include "Game.h"
 #include "Room.h"
+#include "Player.h"
 
 class DungeonCrawlGame : public Game
 {
@@ -27,9 +28,10 @@ private:
 
     Room* currentRoom = nullptr;
     
+    Player* _player;
 
 public:
-    DungeonCrawlGame();
+    DungeonCrawlGame(Player* player);
 
     virtual ~DungeonCrawlGame()
     {
@@ -50,6 +52,11 @@ public:
         {
             currentRoom = find(name);
         }
+    }
+
+    void Quit()
+    {
+        _running = false;
     }
 
     Room* find(std::string name)

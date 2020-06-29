@@ -17,20 +17,49 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <iostream>
 #include "DungeonCrawlGame.h"
 #include "string_handlers.h"
+#include "Command.h";
+#include "GoCommand.h"
+#include "QuitCommand.h"
+#include "SHowCommand.h"
 
-DungeonCrawlGame::DungeonCrawlGame() : Game("Dungeon Crawld v0.1", "A dungeon crawl game", "Command >")
+DungeonCrawlGame::DungeonCrawlGame(Player* player) 
+    : Game("Dungeon Crawld v0.1", "A dungeon crawl game", "Command >"),
+      _player(player)
 {
 }
 
-void DungeonCrawlGame::EvalCommand(std::string command)
+void DungeonCrawlGame::EvalCommand(std::string commandStr)
 {
-    std::vector<std::string> words = split(command);
+    Command* cmd = nullptr;
+    Command* temp = nullptr;
 
-    for (auto word : words)
-    {
-        std::cout << "'" << word << "'" << std::endl;
+    std::vector<std::string> words = split(commandStr);
+    std::vector<std::string> params(words);
+    params.erase(params.begin());
+    std::string command = words[0];
+
+    temp = GoCommand::parse(*this, *_player, command, params);
+    if (temp == nullptr) {
+        temp = QuitCommand::parse(*this, *_player, command, params);
     }
 
+    if (temp == nullptr) {
+        temp = ShowCommand::parse(*this, *_player, command, params);
+    }
+
+    cmd = temp;
+    if (cmd != nullptr)
+    {
+        if (cmd->Execute(*this, *_player, params)) {
+            _player->printRoom(std::cout);
+        }
+        else {
+            cmd->error(std::cout);
+        }
+    }
+    else {
+        std::cout << "Unknown command: " << command << std::endl;
+    }
 
 }
 
