@@ -72,15 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\Python3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Python3\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\Python3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Python3\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\Python3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Python3\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\Python3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Python3\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -164,10 +172,18 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PyInstance.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="string_handlers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Command.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CPyObject.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -199,6 +215,11 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="PyInstance.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Python3.h" />
     <ClInclude Include="QuitCommand.h">
       <SubType>
       </SubType>
@@ -216,6 +237,19 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="string_handlers.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="integer.py">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+    </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

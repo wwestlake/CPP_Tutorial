@@ -30,6 +30,9 @@
     <ClCompile Include="Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PyInstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -71,5 +74,19 @@
     <ClInclude Include="SHowCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Python3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PyInstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CPyObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="integer.py">
+      <Filter>Source Files</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
